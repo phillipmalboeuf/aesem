@@ -17,8 +17,8 @@
     <hr>
 
     <div class="flex flex--gapped">
-      <input type="email" name="email" id="email" placeholder="name@email.com">
-      <button type="submit">✓</button>
+      <input class="col col--mobile--12of12" type="email" name="email" id="email" placeholder="name@email.com">
+      <button class="col col--mobile--12of12" type="submit">✓</button>
     </div>
   </form>
 </aside>
@@ -39,6 +39,11 @@
     transition: transform 666ms;
     transform: translateX(calc(100% - $s5 + $s1));
 
+    @media (max-width: $mobile) {
+      transform: translateX(calc(100% - $s5 - $s5));
+      width: calc(50vw + $s5);
+    }
+
     &.open {
       transform: translateX(0);
     }
@@ -57,6 +62,10 @@
       justify-content: flex-start;
 
       transform: rotate(180deg);
+
+      @media (max-width: $mobile) {
+        font-size: $s0;
+      }
     }
 
     form {
@@ -76,7 +85,7 @@
       }
 
       button {
-        border-radius: 50%;
+        // border-radius: 50%;
       }
     }
   }

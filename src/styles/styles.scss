@@ -150,6 +150,10 @@ p {
 	&.mid {
 		font-size: $s1;
 	}
+
+	@media (max-width: $mobile) {
+		font-size: $s1;
+	}
 }
 
 small {
@@ -298,6 +302,10 @@ textarea {
 	color: currentColor;
 	border: 1px solid transparent;
 	border-radius: $s3;
+
+	+ button {
+		border-radius: $s3;
+	}
 
 	&:focus {
 		outline: 1px solid $dark;
@@ -463,9 +471,9 @@ strong,
 .padded {
   padding: $s1;
 
-	@media (max-width: $mobile) {
-		padding: $s0;
-	}
+	// @media (max-width: $mobile) {
+	// 	padding: $s0;
+	// }
 }
 
 	.padded--tight {
@@ -475,9 +483,9 @@ strong,
 	.padded--thick {
 		padding: ($s2) ($s5);
 
-		@media (max-width: $mobile) {
-			padding: ($s2) ($s1);
-		}
+		// @media (max-width: $mobile) {
+		// 	padding: ($s2) ($s3);
+		// }
 	}
 
 

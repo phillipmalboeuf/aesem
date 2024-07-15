@@ -132,6 +132,10 @@
       flex: 0 0 calc(var(--view) * 1%);
       min-width: 0;
 
+      @media (max-width: $mobile) {
+        --view: 90 !important;
+      }
+
       // @media (max-width: $mobile) {
       //   flex: 0 0 90%;
       // }
