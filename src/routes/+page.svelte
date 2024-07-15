@@ -1,5 +1,6 @@
 <script lang="ts">
   import Icon from '$lib/components/Icon.svelte'
+  import NewsletterForm from '$lib/components/NewsletterForm.svelte'
   import Slider from '$lib/components/Slider.svelte'
   import Video from '$lib/components/Video.svelte'
 
@@ -9,6 +10,8 @@
   let sliderContainer = $state<HTMLElement>()
   let sliderRect = $derived<{ y: number, h: number }>(sliderContainer ? { y: sliderContainer.offsetTop, h: sliderContainer.clientHeight } : undefined)
 </script>
+
+
 
 <header class="flex flex--gapped">
   <figure class="col col--12of12"></figure>
@@ -64,7 +67,7 @@
   figure {
     height: 66vh;
     background-color: $grey;
-    border-radius: $s-2;
+    border-radius: $radius;
 
     &.col--12of12 {
       margin: 0 calc(($s5 * -1) + $s1);

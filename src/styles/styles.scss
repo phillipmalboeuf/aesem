@@ -294,12 +294,13 @@ input,
 select,
 textarea {
 	width: 100%;
-	background-color: $grey;
+	background-color: $light;
 	color: currentColor;
 	border: 1px solid transparent;
+	border-radius: $s3;
 
 	&:focus {
-		outline: 1px solid $gold;
+		outline: 1px solid $dark;
 		outline-offset: 0px;
 	}
 

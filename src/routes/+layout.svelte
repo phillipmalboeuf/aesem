@@ -4,6 +4,7 @@
 	// import Dialog from '$lib/components/Dialog.svelte'
 	// import Header from '$lib/components/Header.svelte'
 	// import Footer from '$lib/components/Footer.svelte'
+	import NewsletterForm from '$lib/components/NewsletterForm.svelte'
 
 	import { page } from '$app/stores'
 	import type { Snippet } from 'svelte'
@@ -22,10 +23,14 @@
 	{/if}
 </svelte:head>
 
+<NewsletterForm />
+
 <div class="{$page.route.id?.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')}" style:--color={$page.data.page?.fields.color}>
 	<!-- <Dialog />
 	<Header navigation={data.navigations['navigation']}
 		work={data.navigations['work']} />  -->
+
+	
 
 	<main class="padded--thick">
 		{@render children()}
