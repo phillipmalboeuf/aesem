@@ -132,9 +132,9 @@ h5,
 	font-weight: normal;
 	// line-height: 1.1;
 
-	// @media (max-width: $mobile) {
-  //   font-size: $mobile_base * $mobile_scale * 1;
-  // }
+	@media (max-width: $mobile) {
+    font-size: $s2;
+  }
 }
 
 h6,
@@ -481,7 +481,7 @@ strong,
 	}
 
 	.padded--thick {
-		padding: ($s2) ($s5);
+		padding: ($s1) ($s5);
 
 		// @media (max-width: $mobile) {
 		// 	padding: ($s2) ($s3);

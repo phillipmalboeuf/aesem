@@ -25,7 +25,7 @@
   <h5 class="flex flex--thick_gapped vertical" bind:this={container}><strong>Limited edition coming soon.</strong><strong>Bientôt disponible en édition limité.</strong> <strong>Pronto disponible en edición limitada.</strong></h5>
 
   <nav class="flex flex--spaced flex--bottom">
-    <a href="/" class="col col--1of12"><Icon i="logo" label="æ" /></a>
+    <a href="/" class="col col--1of12 col--mobile--2of12"><Icon i="logo" label="æ" /></a>
     <a href="/"><h5>æsem athletica</h5></a>
   </nav>
 </header>
@@ -77,6 +77,13 @@
     &.col--right {
       margin-right: calc(($s5 * -1) + $s1);
       width: calc(var(--width) + ($s5) - $s1);
+    }
+
+    @media (max-width: $mobile) {
+      &.col--mobile--12of12 {
+        margin: 0 calc(($s5 * -1) + $s1);
+        width: calc(100% + ($s5 + $s1));
+      }
     }
 
     &.video {
@@ -160,6 +167,14 @@
       position: sticky;
       bottom: 0;
       padding-bottom: $s1;
+
+      @media (max-width: $mobile) {
+        padding-bottom: $s2;
+        
+        h5 {
+          font-size: $s2;
+        }
+      }
     }
   }
 </style>

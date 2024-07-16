@@ -65,6 +65,7 @@
 
       @media (max-width: $mobile) {
         font-size: $s0;
+        height: 33.3vh;
       }
     }
 
