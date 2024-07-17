@@ -87,6 +87,9 @@
 
       button {
         // border-radius: 50%;
+        @media (min-width: $mobile) {
+          width: auto;
+        }
       }
     }
   }

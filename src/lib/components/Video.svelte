@@ -17,7 +17,7 @@
   currentTime = percentage * duration
 }} />
 
-<video bind:this={video} bind:currentTime bind:duration src="/video.mp4" loop playsinline></video>
+<video bind:this={video} bind:currentTime bind:duration src="https://videos.ctfassets.net/igsltvx7i8jl/5pebJjTSFrohXjAdT7Zlbo/23694393491efddae2c9b07d741e8ca8/video.mp4" loop playsinline></video>
 
 <style lang="scss">
   video {
