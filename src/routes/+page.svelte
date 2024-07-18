@@ -1,5 +1,8 @@
 <script lang="ts">
+  import type { Asset } from 'contentful'
+
   import Icon from '$lib/components/Icon.svelte'
+  import Media from '$lib/components/Media.svelte'
   import NewsletterForm from '$lib/components/NewsletterForm.svelte'
   import Slider from '$lib/components/Slider.svelte'
   import Video from '$lib/components/Video.svelte'
@@ -14,7 +17,18 @@
 
 
 <header class="flex flex--gapped">
-  <figure class="col col--12of12"></figure>
+  <figure class="col col--12of12">
+    <Media media={{ fields: { file: {
+      url: 'https://images.ctfassets.net/igsltvx7i8jl/4SJ26TMFfcQ8RTOvkqKYYQ/55abc87cb2939cb94e926c113f86e73f/Capture_d__cran__le_2024-03-05___16.14.01.png',
+      contentType: 'image/png',
+      details: {
+        image: {
+          width: 1140,
+          height: 1326
+        }
+      }
+    } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
+  </figure>
 
   <hr>
 
@@ -39,10 +53,62 @@
   <figure class="col col--12of12 horizontal" bind:this={sliderContainer}>
     <Slider slidesPerView={2} gapped free={sliderRect}>
       <ol class="list--nostyle slider__container">
-        <li class="slide"><figure></figure></li>
-        <li class="slide"><figure></figure></li>
-        <li class="slide"><figure></figure></li>
-        <li class="slide"><figure></figure></li>
+        <li class="slide">
+          <figure>
+            <Media media={{ fields: { file: {
+              url: 'https://images.ctfassets.net/igsltvx7i8jl/1RmyB9y0gKWbUjy7pb4wKM/114fed193b4e8865c8dbad7cde0409ec/Capture_d__cran__le_2024-03-05___16.14.39.png',
+              contentType: 'image/png',
+              details: {
+                image: {
+                  width: 1418,
+                  height: 976
+                }
+              }
+            } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
+          </figure>
+        </li>
+        <li class="slide">
+          <figure>
+            <Media media={{ fields: { file: {
+              url: 'https://images.ctfassets.net/igsltvx7i8jl/4g6pYgAy4tRgUaDLlDoEaB/9331963c94904428dc442541f695b380/454346768jpg.jpg',
+              contentType: 'image/jpeg',
+              details: {
+                image: {
+                  width: 1200,
+                  height: 810
+                }
+              }
+            } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
+          </figure>
+        </li>
+        <li class="slide">
+          <figure>
+            <Media media={{ fields: { file: {
+              url: 'https://images.ctfassets.net/igsltvx7i8jl/1RmyB9y0gKWbUjy7pb4wKM/114fed193b4e8865c8dbad7cde0409ec/Capture_d__cran__le_2024-03-05___16.14.39.png',
+              contentType: 'image/png',
+              details: {
+                image: {
+                  width: 1418,
+                  height: 976
+                }
+              }
+            } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
+          </figure>
+        </li>
+        <li class="slide">
+          <figure>
+            <Media media={{ fields: { file: {
+              url: 'https://images.ctfassets.net/igsltvx7i8jl/4g6pYgAy4tRgUaDLlDoEaB/9331963c94904428dc442541f695b380/454346768jpg.jpg',
+              contentType: 'image/jpeg',
+              details: {
+                image: {
+                  width: 1200,
+                  height: 810
+                }
+              }
+            } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
+          </figure>
+        </li>
       </ol>
     </Slider>
   </figure>
@@ -58,16 +124,34 @@
 
   <div class="col col--1of12"></div>
 
-  <figure class="col col--7of12 col--mobile--12of12 col--right"></figure>
+  <figure class="col col--7of12 col--mobile--12of12 col--right">
+    <Media media={{ fields: { file: {
+      url: 'https://images.ctfassets.net/igsltvx7i8jl/1RmyB9y0gKWbUjy7pb4wKM/114fed193b4e8865c8dbad7cde0409ec/Capture_d__cran__le_2024-03-05___16.14.39.png',
+      contentType: 'image/png',
+      details: {
+        image: {
+          width: 1418,
+          height: 976
+        }
+      }
+    } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
+  </figure>
 </section>
 
 
 <style lang="scss">
 
   figure {
-    height: 66vh;
+    height: 75lvh;
     background-color: $grey;
     border-radius: $radius;
+
+    :global(img),
+    :global(video) {
+      height: 75lvh;
+      object-fit: cover;
+      border-radius: $radius;
+    }
 
     &.col--12of12 {
       margin: 0 calc(($s5 * -1) + $s1);
@@ -91,6 +175,10 @@
       margin: 0 calc(($s5 * -1));
       width: calc(100% + ($s5 * 2));
       height: 100lvh;
+
+      :global(video) {
+        height: 100lvh;
+      }
     }
 
     &.horizontal {
@@ -117,6 +205,12 @@
           &:nth-child(2n) {
             figure {
               height: calc(100vh - ($s1 * 2));
+
+              :global(img),
+              :global(video) {
+                height: 75lvh;
+                height: calc(100vh - ($s1 * 2));
+              }
             }
           }
         }
