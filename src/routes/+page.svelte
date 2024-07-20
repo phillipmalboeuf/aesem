@@ -17,7 +17,7 @@
 
 
 <header class="flex flex--gapped">
-  <figure class="col col--12of12">
+  <figure class="col col--12of12 first">
     <Media media={{ fields: { file: {
       url: 'https://images.ctfassets.net/igsltvx7i8jl/4SJ26TMFfcQ8RTOvkqKYYQ/55abc87cb2939cb94e926c113f86e73f/Capture_d__cran__le_2024-03-05___16.14.01.png',
       contentType: 'image/png',
@@ -30,6 +30,7 @@
     } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
   </figure>
 
+  <hr>
   <hr>
 
   <figure class="col col--12of12 video">
@@ -142,7 +143,6 @@
 <style lang="scss">
 
   figure {
-    height: 75lvh;
     background-color: $grey;
     border-radius: $radius;
 
@@ -151,6 +151,13 @@
       height: 75lvh;
       object-fit: cover;
       border-radius: $radius;
+    }
+
+    @media (max-width: $mobile) {
+      :global(img),
+      :global(video) {
+        height: 50lvh;
+      }
     }
 
     &.col--12of12 {
@@ -170,6 +177,15 @@
       }
     }
 
+    &.first {
+      @media (max-width: $mobile) {
+        :global(img),
+        :global(video) {
+          height: 72lvh;
+        }
+      }
+    }
+
     &.video {
       border-radius: 0;
       margin: 0 calc(($s5 * -1));
@@ -178,6 +194,7 @@
 
       :global(video) {
         height: 100lvh;
+        border-radius: 0;
       }
     }
 
@@ -223,6 +240,7 @@
 
     @media (max-width: $mobile) {
       font-size: 10vw;
+      padding-bottom: calc($s3);
     }
   }
 
@@ -238,7 +256,9 @@
 
     .vertical {
       margin-top: -100vh;
+      -webkit-writing-mode: vertical-rl;
       writing-mode: vertical-rl;
+      -webkit-text-orientation: mixed;
       text-orientation: mixed;
       height: 300vh;
       
@@ -260,15 +280,21 @@
     nav {
       position: sticky;
       bottom: 0;
-      padding-bottom: $s1;
+      padding-bottom: calc($s4);
 
       @media (max-width: $mobile) {
-        padding-bottom: $s2;
+        padding-bottom: calc($s5);
         
         h5 {
           font-size: $s2;
         }
       }
+    }
+  }
+
+  .col--middle {
+    @media (max-width: $mobile) {
+      margin: $s5 0;
     }
   }
 </style>

@@ -6,7 +6,7 @@
 <svelte:window bind:scrollY />
 
 <aside class="flex" class:open={open || (open === undefined && scrollY <= 0)}>
-  <button class="button--none col flex" onclick={() => open = (open === undefined && scrollY <= 0) ? false : !open}>Newsletter subscription</button>
+  <button class="button--none col flex" onclick={() => open = (open === undefined && scrollY <= 0) ? false : !open}>Newsletter&nbsp;subscription</button>
 
   <form class="flex flex--gapped flex--column col col--9of12 padded" action="">
 
@@ -50,9 +50,9 @@
 
     > button {
       width: $s5;
-      padding: $s5 0 $s1;
+      padding: $s5 $s2 $s1 0;
       display: flex;
-      height: 50vh;
+      height: 50lvh;
       cursor: pointer;
       writing-mode: vertical-rl;
       text-orientation: mixed;
@@ -65,7 +65,8 @@
 
       @media (max-width: $mobile) {
         font-size: $s0;
-        height: 33.3vh;
+        padding: $s5 $s1 $s1 0;
+        height: 45lvh;
       }
     }
 
