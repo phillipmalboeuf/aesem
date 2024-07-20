@@ -200,7 +200,7 @@
 
     &.horizontal {
       background-color: transparent;
-      height: calc(200vh - ($s1 * 2));
+      height: calc(300vh);
 
       :global(.slider) {
         position: sticky;

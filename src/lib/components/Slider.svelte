@@ -1,6 +1,6 @@
 <script lang="ts">
   import { type EmblaOptionsType, type EmblaCarouselType } from 'embla-carousel'
-  import emblaCarouselSvelte from 'embla-carousel-svelte'
+  import emblaCarouselSvelte, { type EmblaCarouselSvelteType } from 'embla-carousel-svelte'
   import Autoplay, { type AutoplayOptionsType } from 'embla-carousel-autoplay'
   import Autoheight from 'embla-carousel-auto-height'
   import { onDestroy, onMount, type Snippet } from 'svelte'
@@ -21,7 +21,7 @@
   } = $props()
 
   let figure = $state<HTMLElement>()
-  let previous: number
+  // let previous: number
 
   const plugins = [
     ...autoplay ? [Autoplay({ delay: 2666, stopOnFocusIn: true, stopOnMouseEnter: false, stopOnInteraction: true })] : [],
@@ -37,7 +37,7 @@
     //     console.log(slider)
     //   })
       
-    //   return off()
+    //   return () => off()
     // }
   })
 
@@ -46,23 +46,20 @@
   })
 </script>
 
-<svelte:window onscroll={(event) => {
+<svelte:window onscroll={() => {
   if (!free || !slider) return
   const scroll = window.scrollY - free.y
   if (scroll < 0) {
-    previous = 0
+    slider.internalEngine().translate.to(0)
     return
   }
   const percentage = scroll / (free.h - window.innerHeight)
   if (percentage > 1) {
-    previous = 1
+    slider.internalEngine().translate.to(slider.internalEngine().limit.length * -1)
     return
   }
-  if (previous) {
-    slider.internalEngine().scrollTo.distance((percentage - previous) * free.h * -1, false)
-  }
 
-  previous = percentage
+  slider.internalEngine().translate.to(percentage * slider.internalEngine().limit.length * -1)
 }} />
 
 {#if !disabled}
@@ -118,6 +115,9 @@
   // cursor: ew-resize;
   position: relative;
   user-select: none;
+  overscroll-behavior: none;
+  // overscroll-behavior: contain;
+  // -webkit-overflow-scrolling: auto;
 
   :global(.slider__container) {
     list-style: none;
