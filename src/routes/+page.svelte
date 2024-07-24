@@ -114,7 +114,7 @@
     </Slider>
   </figure>
 
-  <p class="col col--4of12 col--mobile--12of12 col--middle">EN.
+  <p class="col col--4of12 col--mobile--10of12 col--middle">EN.
   We are working on the production of a new tennis shoe that is tailormade to fit the lifestyle of the new generation of athletes. Made in collaboration with Leylah Fernandez, we aim to add artistry to the technology, performance, and enginering checklist.
 
   FR.
@@ -255,6 +255,7 @@
 
     @media (max-width: $mobile) {
       // font-size: 10vw;
+      margin: $s2 0 $s1;
       padding-bottom: calc($s3);
     }
   }

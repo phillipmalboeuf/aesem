@@ -133,7 +133,7 @@
       min-width: 0;
 
       @media (max-width: $mobile) {
-        --view: 90 !important;
+        --view: 93 !important;
       }
 
       // @media (max-width: $mobile) {
