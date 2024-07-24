@@ -37,7 +37,7 @@
 
     width: 33.3vw;
     transition: transform 666ms;
-    transform: translateX(calc(100% - $s5 + $s1));
+    transform: translateX(calc(100% - $s5 + ($s1 / 2)));
 
     @media (max-width: $mobile) {
       transform: translateX(calc(100% - $s5 - $s5));
