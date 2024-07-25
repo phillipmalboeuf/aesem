@@ -13,6 +13,7 @@
 
 <svelte:window bind:scrollY />
 
+{#if form}
 <aside class="flex" class:open={open || (open === undefined && scrollY <= 0)}>
   <button class="button--none col flex" onclick={() => open = (open === undefined && scrollY <= 0) ? false : !open}>{@html form.fields.title}</button>
 
@@ -31,6 +32,7 @@
     </div>
   </form>
 </aside>
+{/if}
 
 <style lang="scss">
   aside {
