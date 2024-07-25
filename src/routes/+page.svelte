@@ -6,9 +6,9 @@
   import NewsletterForm from '$lib/components/NewsletterForm.svelte'
   import Slider from '$lib/components/Slider.svelte'
   import Video from '$lib/components/Video.svelte'
+  import Rich from '$lib/components/Rich.svelte'
   
   import type { PageData } from './$types'
-  import Rich from '$lib/components/Rich.svelte';
   let { data }: {
 		data: PageData
 	} = $props()
