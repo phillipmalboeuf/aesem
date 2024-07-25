@@ -170,7 +170,9 @@
             margin-right: $s1;
           }
 
-          --view: 62;
+          & {
+            --view: 62;
+          }
 
           :global(img),
           :global(video) {
