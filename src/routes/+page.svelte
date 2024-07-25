@@ -6,6 +6,12 @@
   import NewsletterForm from '$lib/components/NewsletterForm.svelte'
   import Slider from '$lib/components/Slider.svelte'
   import Video from '$lib/components/Video.svelte'
+  
+  import type { PageData } from './$types'
+  import Rich from '$lib/components/Rich.svelte';
+  let { data }: {
+		data: PageData
+	} = $props()
 
   let container = $state<HTMLElement>()
   let rect = $derived<{ y: number, h: number }>(container ? { y: container.offsetTop, h: container.clientHeight } : undefined)
@@ -15,29 +21,19 @@
 </script>
 
 
-
 <header class="flex flex--gapped">
   <figure class="col col--12of12 first">
-    <Media media={{ fields: { file: {
-      url: 'https://images.ctfassets.net/igsltvx7i8jl/4SJ26TMFfcQ8RTOvkqKYYQ/55abc87cb2939cb94e926c113f86e73f/Capture_d__cran__le_2024-03-05___16.14.01.png',
-      contentType: 'image/png',
-      details: {
-        image: {
-          width: 1140,
-          height: 1326
-        }
-      }
-    } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
+    <Media media={data.page.fields.hero} />
   </figure>
 
   <hr>
   <hr>
 
   <figure class="col col--12of12 video">
-    <Video {rect} />
+    <Video {rect} src={data.page.fields.video.fields.file.url} />
   </figure>
 
-  <h5 class="flex flex--thick_gapped vertical" bind:this={container}><strong>Limited edition coming soon.</strong><strong>Bientôt disponible en édition limité.</strong> <strong>Pronto disponible en edición limitada.</strong></h5>
+  <h5 class="flex flex--thick_gapped vertical" bind:this={container}>{@html data.page.fields.videoCaption}</h5>
 
   <nav class="flex flex--spaced flex--bottom">
     <a href="/" class="col col--1of12 col--mobile--2of12"><Icon i="logo" label="æ" /></a>
@@ -46,96 +42,33 @@
 </header>
 
 <section class="flex flex--gapped">
-  <h1 class="col col--12of12 last">æsem athletica</h1>
+  <h1 class="col col--12of12 last">{data.page.fields.title}</h1>
 
   <hr>
-  <center class="col col--12of12"><h1>Harmony at play</h1></center>
+  <center class="col col--12of12"><h1>{data.page.fields.tagline}</h1></center>
   <hr>
   <figure class="col col--12of12 horizontal" bind:this={sliderContainer}>
     <Slider slidesPerView={2} gapped free={sliderRect}>
       <ol class="list--nostyle slider__container">
+        {#each data.page.fields.gallery as media}
         <li class="slide">
           <figure>
-            <Media media={{ fields: { file: {
-              url: 'https://images.ctfassets.net/igsltvx7i8jl/1RmyB9y0gKWbUjy7pb4wKM/114fed193b4e8865c8dbad7cde0409ec/Capture_d__cran__le_2024-03-05___16.14.39.png',
-              contentType: 'image/png',
-              details: {
-                image: {
-                  width: 1418,
-                  height: 976
-                }
-              }
-            } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
+            <Media {media} />
           </figure>
         </li>
-        <li class="slide">
-          <figure>
-            <Media media={{ fields: { file: {
-              url: 'https://images.ctfassets.net/igsltvx7i8jl/4g6pYgAy4tRgUaDLlDoEaB/9331963c94904428dc442541f695b380/454346768jpg.jpg',
-              contentType: 'image/jpeg',
-              details: {
-                image: {
-                  width: 1200,
-                  height: 810
-                }
-              }
-            } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
-          </figure>
-        </li>
-        <li class="slide">
-          <figure>
-            <Media media={{ fields: { file: {
-              url: 'https://images.ctfassets.net/igsltvx7i8jl/1RmyB9y0gKWbUjy7pb4wKM/114fed193b4e8865c8dbad7cde0409ec/Capture_d__cran__le_2024-03-05___16.14.39.png',
-              contentType: 'image/png',
-              details: {
-                image: {
-                  width: 1418,
-                  height: 976
-                }
-              }
-            } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
-          </figure>
-        </li>
-        <li class="slide">
-          <figure>
-            <Media media={{ fields: { file: {
-              url: 'https://images.ctfassets.net/igsltvx7i8jl/4g6pYgAy4tRgUaDLlDoEaB/9331963c94904428dc442541f695b380/454346768jpg.jpg',
-              contentType: 'image/jpeg',
-              details: {
-                image: {
-                  width: 1200,
-                  height: 810
-                }
-              }
-            } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
-          </figure>
-        </li>
+        {/each}
       </ol>
     </Slider>
   </figure>
 
-  <p class="col col--4of12 col--mobile--10of12 col--middle">EN.
-  We are working on the production of a new tennis shoe that is tailormade to fit the lifestyle of the new generation of athletes. Made in collaboration with Leylah Fernandez, we aim to add artistry to the technology, performance, and enginering checklist.
-
-  FR.
-  Nous travaillons sur la production d’un nouveau soulier de tennis qui est fait sur mesure pour le style de vie de la nouvelle génération d’athlètes. Fait en collaboration avec Leylah Fernandez, nous souhaitons ajouter la notion d’art aux critères de technologie, performance et ingénierie.
-
-  ES.
-  Estamos trabajando en la producción de una nueva zapatilla de tenis hecha a medida para el estilo de vida de la nueva generación de deportistas. Realizado en colaboración con Leylah Fernández, queremos agregar la noción de arte a la lista de tecnología, performance e ingeniería.</p>
+  <div class="col col--4of12 col--mobile--10of12 col--middle">
+    <Rich body={data.page.fields.text} />
+  </div>
 
   <div class="col col--1of12"></div>
 
   <figure class="col col--7of12 col--mobile--12of12 col--right">
-    <Media media={{ fields: { file: {
-      url: 'https://images.ctfassets.net/igsltvx7i8jl/1RmyB9y0gKWbUjy7pb4wKM/114fed193b4e8865c8dbad7cde0409ec/Capture_d__cran__le_2024-03-05___16.14.39.png',
-      contentType: 'image/png',
-      details: {
-        image: {
-          width: 1418,
-          height: 976
-        }
-      }
-    } }} as any as Asset<"WITHOUT_UNRESOLVABLE_LINKS">} />
+    <Media media={data.page.fields.footerHero} />
   </figure>
 </section>
 
@@ -281,7 +214,7 @@
       align-items: center;
       justify-content: center;
 
-      strong {
+      :global(strong) {
         text-transform: uppercase;
         font-weight: normal;
       }

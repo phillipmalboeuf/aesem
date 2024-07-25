@@ -1,4 +1,12 @@
 <script lang="ts">
+  import type { TypeFormSkeleton } from '$lib/clients/content_types'
+  import type { Entry } from 'contentful'
+  import Rich from './Rich.svelte';
+
+  let { form }: {
+		form: Entry<TypeFormSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">,
+	} = $props()
+
   let open = $state<boolean>()
   let scrollY = $state(0)
 </script>
@@ -6,19 +14,20 @@
 <svelte:window bind:scrollY />
 
 <aside class="flex" class:open={open || (open === undefined && scrollY <= 0)}>
-  <button class="button--none col flex" onclick={() => open = (open === undefined && scrollY <= 0) ? false : !open}>Newsletter&nbsp;subscription</button>
+  <button class="button--none col flex" onclick={() => open = (open === undefined && scrollY <= 0) ? false : !open}>{@html form.fields.title}</button>
 
-  <form class="flex flex--gapped flex--column col col--9of12 padded" action="">
+  <form class="flex flex--gapped flex--column col col--9of12 padded" action={form.fields.action} method="post" target="_blank">
 
-    <h5>Be among the first to be notified on availability.</h5>
+    <!-- <h5>Be among the first to be notified on availability.</h5>
     <p>FR: Soyez parmi les premiers à être informé sur les disponibilités.</p>
-    <p>ES: Sea uno de los primeros en ser notado sobre la disponibilidad.</p>
+    <p>ES: Sea uno de los primeros en ser notado sobre la disponibilidad.</p> -->
+    <Rich body={form.fields.text} />
 
     <hr>
 
     <div class="flex flex--gapped">
-      <input class="col col--mobile--12of12" type="email" name="email" id="email" placeholder="name@email.com">
-      <button class="col col--mobile--12of12" type="submit">✓</button>
+      <input class="col col--mobile--12of12" type="email" name="EMAIL" id="email" placeholder={form.fields.email}>
+      <button class="col col--mobile--12of12" type="submit">{form.fields.button}</button>
     </div>
   </form>
 </aside>

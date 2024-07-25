@@ -19,11 +19,11 @@
 <svelte:head>
 	{#if $page.data.page?.fields}
 	<title>{$page.data.page.fields.title}</title>
-	<!-- <meta name="description" content={$page.data.page.fields.description} /> -->
+	<meta name="description" content={$page.data.page.fields.description} />
 	{/if}
 </svelte:head>
 
-<NewsletterForm />
+<NewsletterForm form={$page.data.form} />
 
 <div class="{$page.route.id?.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')}" style:--color={$page.data.page?.fields.color}>
 	<!-- <Dialog />
