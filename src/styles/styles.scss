@@ -87,9 +87,9 @@ h1,
 	font-size: 9vw;
 	font-weight: normal;
 
-	// @media (max-width: $mobile) {
-  //   font-size: $mobile_base * $mobile_scale * 3;
-  // }
+	@media (max-width: $mobile) {
+    font-size: 15vw;
+  }
 
 	// @media (max-width: $mobile) {
   //   font-size: $s3;
@@ -157,7 +157,7 @@ p {
 }
 
 small {
-	font-size: $s-1;
+	font-size: $s-2;
 }
 
 a {

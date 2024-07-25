@@ -25,6 +25,9 @@ export interface TypePageFields {
     gallery?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     text?: EntryFieldTypes.RichText;
     footerHero?: EntryFieldTypes.AssetLink;
+    instagram?: EntryFieldTypes.Symbol;
+    facebook?: EntryFieldTypes.Symbol;
+    copyright?: EntryFieldTypes.Symbol;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;

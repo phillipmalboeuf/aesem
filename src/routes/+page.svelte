@@ -42,7 +42,7 @@
 </header>
 
 <section class="flex flex--gapped">
-  <h1 class="col col--12of12 last">{data.page.fields.title}</h1>
+  <h1 class="col col--10of12 last">{data.page.fields.title}</h1>
 
   <hr>
   <center class="col col--12of12"><h1>{data.page.fields.tagline}</h1></center>
@@ -70,6 +70,18 @@
   <figure class="col col--7of12 col--mobile--12of12 col--right">
     <Media media={data.page.fields.footerHero} />
   </figure>
+
+  <nav class="col col--2of12 col--mobile--12of12 last">
+    <small>{data.page.fields.copyright}</small><br>
+    <div class="flex flex--tight_gapped">
+      {#if data.page.fields.facebook}
+      <a href={data.page.fields.facebook} rel="external" target="_blank"><Icon label="Facebook" i="facebook" /></a>
+      {/if}
+      {#if data.page.fields.instagram}
+      <a href={data.page.fields.instagram} rel="external" target="_blank"><Icon label="Instagram" i="instagram" /></a>
+      {/if}
+    </div>
+  </nav>
 </section>
 
 
@@ -190,6 +202,48 @@
       // font-size: 10vw;
       margin: $s2 0 $s1;
       padding-bottom: calc($s3);
+    }
+  }
+
+  nav.last {
+    @media (min-width: $mobile) {
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    @media (max-width: $mobile) {
+      display: flex;
+      align-items: center;
+
+      small {
+        width: 50%;
+      }
+    }
+
+    div {
+      justify-content: flex-end;
+
+      @media (min-width: $mobile) {
+        margin: $s0 0;
+      }
+    }
+    
+    a {
+      :global(svg) {
+        width: $s2;
+        height: $s2;
+
+        @media (max-width: $mobile) {
+          width: 8vw;
+          height: $s3;
+        }
+      }
+    }
+  }
+
+  center {
+    @media (max-width: $mobile) {
+      padding: 0 $s3;
     }
   }
 
