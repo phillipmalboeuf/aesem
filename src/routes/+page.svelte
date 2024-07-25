@@ -42,10 +42,10 @@
 </header>
 
 <section class="flex flex--gapped">
-  <h1 class="col col--10of12 last">{data.page.fields.title}</h1>
+  <h1 class="col col--10of12 last">{@html data.page.fields.title}</h1>
 
   <hr>
-  <center class="col col--12of12"><h1>{data.page.fields.tagline}</h1></center>
+  <center class="col col--12of12"><h1>{@html data.page.fields.tagline}</h1></center>
   <hr>
   <figure class="col col--12of12 horizontal" bind:this={sliderContainer}>
     <Slider slidesPerView={2} gapped free={sliderRect}>

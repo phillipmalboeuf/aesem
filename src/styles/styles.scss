@@ -456,6 +456,11 @@ strong,
 	font-family: $heading_font;
 }
 
+em {
+	font-family: $alt_font;
+	font-size: 1.2em;
+}
+
 
 [id] {
 	scroll-margin-top: $base * 4;
