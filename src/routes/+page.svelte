@@ -30,10 +30,14 @@
   <hr>
 
   <figure class="col col--12of12 video">
+    {#if data.page.fields.video.fields.file.contentType.startsWith('video')}
     <Video {rect} src={data.page.fields.video.fields.file.url} />
+    {:else}
+    <Media media={data.page.fields.video} />
+    {/if}
   </figure>
 
-  <h5 class="flex flex--thick_gapped vertical" bind:this={container}>{@html data.page.fields.videoCaption}</h5>
+  <h5 class="flex flex--thick_gapped vertical" class:white={!data.page.fields.video.fields.file.contentType.startsWith('video')} bind:this={container}>{@html data.page.fields.videoCaption}</h5>
 
   <nav class="flex flex--spaced flex--bottom">
     <a href="/" class="col col--1of12 col--mobile--2of12"><Icon i="logo" label="æ" /></a>
@@ -137,7 +141,8 @@
       width: calc(100% + ($s5 * 2));
       height: 100lvh;
 
-      :global(video) {
+      :global(video),
+      :global(img) {
         height: 100lvh;
         border-radius: 0;
       }
@@ -274,6 +279,10 @@
         text-transform: uppercase;
         font-weight: normal;
       }
+
+      // &.white {
+      //   color: white;
+      // }
     }
     
     .video {
