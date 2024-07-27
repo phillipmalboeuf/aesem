@@ -26,7 +26,7 @@
 
 <!-- svelte-ignore a11y_media_has_caption -->
 <video bind:this={video} bind:currentTime bind:duration preload="auto" {src} loop playsinline muted controls={false}>
-  <!-- <source srcsrc type="video/mp4" /> -->
+  <!-- <source src type="video/mp4" /> -->
   <!-- <source src="https://videos.ctfassets.net/igsltvx7i8jl/2iNsFK7xGAnrbIsvKRVh1v/dfe1bee3d4c620761f58a699e05919b6/Ajustement_au_timing.webm" type="video/webm" /> -->
   Your browser does not support the video tag.
 </video>
