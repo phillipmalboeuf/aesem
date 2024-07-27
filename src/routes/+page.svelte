@@ -20,6 +20,11 @@
   let sliderRect = $derived<{ y: number, h: number }>(sliderContainer ? { y: sliderContainer.offsetTop, h: sliderContainer.clientHeight } : undefined)
 </script>
 
+<!-- <svelte:head>
+  {#if data.page.fields.video.fields.file.contentType.startsWith('video')}
+  <link rel="preload" as="video" type={data.page.fields.video.fields.file.contentType} href={data.page.fields.video.fields.file.url} >
+  {/if}
+</svelte:head> -->
 
 <header class="flex flex--gapped">
   <figure class="col col--12of12 first">

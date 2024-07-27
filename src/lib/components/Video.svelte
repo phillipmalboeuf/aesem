@@ -12,17 +12,21 @@
 
   onMount(() => {
     video.load()
+
+    let height = window.innerHeight
+
+    window.addEventListener("scroll", () => {
+      if (!video || !duration || !rect) return
+      const scroll = window.scrollY + height - rect.y
+      if (scroll < 0) return
+      const percentage = scroll / (rect.h + height)
+      if (percentage > 1) return
+      currentTime = percentage * duration
+    }, { passive: true })
   })
 </script>
 
-<svelte:window onscroll={() => {
-  if (!video || !duration || !rect) return
-  const scroll = window.scrollY + window.innerHeight - rect.y
-  if (scroll < 0) return
-  const percentage = scroll / (rect.h + window.innerHeight)
-  if (percentage > 1) return
-  currentTime = percentage * duration
-}} />
+<!-- <svelte:window onscroll={} /> -->
 
 <!-- svelte-ignore a11y_media_has_caption -->
 <video bind:this={video} bind:currentTime bind:duration preload="auto" {src} loop playsinline muted controls={false}>
