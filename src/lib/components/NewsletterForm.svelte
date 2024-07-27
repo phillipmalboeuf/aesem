@@ -15,7 +15,9 @@
 
 {#if form}
 <aside class="flex" class:open={open || (open === undefined && scrollY <= 0)}>
-  <button class="button--none col flex" onclick={() => open = (open === undefined && scrollY <= 0) ? false : !open}>{@html form.fields.title}</button>
+  <button class="button--none col" onclick={() => open = (open === undefined && scrollY <= 0) ? false : !open}>
+    <h5>{@html form.fields.title}</h5>
+  </button>
 
   <form class="flex flex--gapped flex--column col col--9of12 padded" action={form.fields.action} method="post" target="_blank">
 
@@ -51,7 +53,7 @@
     transform: translateX(calc(100% - $s5 + ($s1 / 2)));
 
     @media (max-width: $mobile) {
-      transform: translateX(calc(100% - $s5 - $s5));
+      transform: translateX(calc(100% - $s5 - $s1));
       width: calc(50vw + $s5);
     }
 
@@ -60,24 +62,34 @@
     }
 
     > button {
-      width: $s5;
-      padding: $s5 $s2 $s1 0;
-      display: flex;
-      height: 50lvh;
       cursor: pointer;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
+      width: $s5;
+      padding: calc($s5 * 2) 0 $s1;
+      height: 50lvh;
 
-      color: $light;
+      display: flex;
       align-items: center;
-      justify-content: flex-start;
-
-      transform: rotate(180deg);
+      justify-content: center;
 
       @media (max-width: $mobile) {
-        font-size: $s0;
-        padding: $s5 $s1 $s1 0;
         height: 45lvh;
+        justify-content: flex-end;
+      }
+
+      > * {
+        font-size: $s1;
+
+        @media (max-width: $mobile) {
+          font-size: $s0;
+        }
+
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
+        -webkit-text-orientation: mixed;
+        text-orientation: mixed;
+
+        color: $light;
+        transform: rotate(180deg);
       }
     }
 
